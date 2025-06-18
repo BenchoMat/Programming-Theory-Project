@@ -11,7 +11,7 @@ public class PetBehaviour : MonoBehaviour
     public float verticalInput;
     private float m_eatingSpeed = 3.0f;
     public bool isEating = false;
-    public float eatingSpeed
+    public float eatingSpeed // ENCAPSULATION
     {
         get { return m_eatingSpeed; }
         set
@@ -51,18 +51,18 @@ public class PetBehaviour : MonoBehaviour
         }
     }
 
-    public virtual void Run(Vector3 runDirection, float runForce)
+    public virtual void Run(Vector3 runDirection, float runForce) // POLYMORPHISM OVERLOADING & ABSTRACTION
     {
         petRb.AddForce(runDirection * runForce, ForceMode.Impulse);
     }
 
-    public virtual void Run(float horizontalInput, float verticalInput)
+    public virtual void Run(float horizontalInput, float verticalInput) // POLYMORPHISM OVERLOADING & ABSTRACTION
     {
         Vector3 move = new Vector3(horizontalInput, 0, verticalInput).normalized;
         petRb.AddForce(move * runForce, ForceMode.Force);
     }
 
-    public virtual IEnumerator DelayEating(float m_eatingSpeed)
+    public virtual IEnumerator DelayEating(float m_eatingSpeed) // ABSTRACTION
     {
         isEating = true;
         petRb.linearVelocity = Vector3.zero;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CharoController : PetBehaviour
+public class CharoController : PetBehaviour // INHERITANCE
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -9,12 +9,12 @@ public class CharoController : PetBehaviour
         runForce = 6.0f;
         eatingSpeed = 4.9f;
     }
-    public override void Run(Vector3 runDirection, float runForce)
+    public override void Run(Vector3 runDirection, float runForce) // POLYMORPHISM OVERRIDING
     {
         petRb.AddForce(runDirection * runForce, ForceMode.Impulse);
     }
 
-    public override void Run(float horizontalInput, float verticalInput)
+    public override void Run(float horizontalInput, float verticalInput) // POLYMORPHISM OVERRIDING
     {
         Vector3 move = new Vector3(horizontalInput, 0, verticalInput).normalized;
         petRb.AddForce(move * runForce, ForceMode.Force);
